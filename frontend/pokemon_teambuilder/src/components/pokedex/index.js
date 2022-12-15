@@ -25,7 +25,7 @@ export const Pokedex = () => {
                 <Display />
                 {/* <NextDisplay pokeId={pokeId+1} /> */}
             </div>
-            {/* <Stats /> */}
+            <Stats />
             <button onClick={handle_prev}>Previous</button>
             <button onClick={handle_next}>Next</button>
             {/* <Compare pokeId={pokeId}/> */}

@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux';
 import dexReducer from './reducers/dexReducer';
+import statsReducer from './reducers/statsReducer';
 
-const store = createStore(dexReducer) 
+const store = createStore(combineReducers({
+  dexReducer,
+  statsReducer
+})) 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

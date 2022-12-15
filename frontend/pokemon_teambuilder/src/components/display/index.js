@@ -4,7 +4,7 @@ import axios from "axios"
 import './index.css'
 
 export const Display = () => {
-    const pokeId = useSelector(state => state.id)
+    const pokeId = useSelector(state => state.dexReducer.id)
     const [pokeImg, setPokeImg] = useState("")
 
     useEffect(() => {

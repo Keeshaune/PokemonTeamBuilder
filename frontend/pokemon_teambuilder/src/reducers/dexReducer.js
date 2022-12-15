@@ -1,6 +1,7 @@
 const initialState = {
     id: 1,
-    compId: 0
+    compId: 1,
+    compOn: false
 }
 
 const dexReducer = (state=initialState, action) => {
@@ -10,9 +11,9 @@ const dexReducer = (state=initialState, action) => {
         case "DECREASE":
             return {...state, id: state.id - action.payload}
         case "COMPARE":
-            return {...state, compId: state.id}
-        case "HIDECOMP":
-            return {...state, compId: 0} 
+            return {...state, compOn: action.payload}
+        case "HIDE_COMP":
+            return {...state, compOn: action.payload} 
         default:
             return state
     }
