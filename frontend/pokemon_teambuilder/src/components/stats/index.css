@@ -1,0 +1,11 @@
+.all-stats {
+    display: flex;
+    justify-content: center;
+}
+
+.stats-col-1, .stats-col-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+}

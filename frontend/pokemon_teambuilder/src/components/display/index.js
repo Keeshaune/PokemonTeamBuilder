@@ -1,20 +1,10 @@
 import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import axios from "axios"
+import './index.css'
 
-export const Display = ({ pokeId }) => {
-    // const [pokemon, setPokemon] = useState({
-    //     name: "bulbasaur",
-    //     type: "grass",
-    //     stats: {
-    //         hp: 45,
-    //         attack: 49,
-    //         defense: 49,
-    //         "special-attack": 65,
-    //         "special-defense": 65,
-    //         speed: 45
-    //     },
-    //     img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-    // })
+export const Display = () => {
+    const pokeId = useSelector(state => state.id)
     const [pokeImg, setPokeImg] = useState("")
 
     useEffect(() => {
@@ -29,7 +19,7 @@ export const Display = ({ pokeId }) => {
     }
 
     return (
-        <img src={pokeImg} alt="pokemon"/>
+        <img src={pokeImg} alt="pokemon" className="display"/>
     )
 }
 
