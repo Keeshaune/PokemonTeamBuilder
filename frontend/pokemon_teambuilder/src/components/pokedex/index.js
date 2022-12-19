@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from "react-redux"
 import { Display } from "../display"
-import { increase_id, decrease_id } from "../../actions"
-// import { BackDisplay } from "../backDisplay"
-// import { NextDisplay } from "../nextDisplay"
+import { increase_id, decrease_id, set_id } from "../../actions"
 import { Compare } from "../compare"
 import { Stats } from "../stats"
+import { Search } from "../search"
 import "./index.css"
 
 export const Pokedex = () => {
@@ -12,22 +11,23 @@ export const Pokedex = () => {
     const dispatch = useDispatch()
 
     const handle_next = () => {
-        dispatch(increase_id())
+        if (id === 905) dispatch(set_id(1))
+        else dispatch(increase_id())
     }
 
     const handle_prev = () => {
-        dispatch(decrease_id())
+        if (id === 1) dispatch(set_id(905))
+        else dispatch(decrease_id())
     }
 
     return (
         <>
             <div className="images">
-                {/* <BackDisplay pokeId={pokeId-1} /> */}
                 <Display display={id}/>
-                {/* <NextDisplay pokeId={pokeId+1} /> */}
             </div>
             <Stats />
             <button onClick={handle_prev}>Previous</button>
+            <Search />
             <button onClick={handle_next}>Next</button>
             <Compare />
         </>

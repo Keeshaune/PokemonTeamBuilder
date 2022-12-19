@@ -10,6 +10,8 @@ const dexReducer = (state=initialState, action) => {
             return {...state, id: state.id + action.payload}
         case "DECREASE":
             return {...state, id: state.id - action.payload}
+        case "SET":
+            return {...state, id: action.payload}
         case "UPDATE_COMP":
             return {...state, compId: state.id}
         case "SHOW_COMP":

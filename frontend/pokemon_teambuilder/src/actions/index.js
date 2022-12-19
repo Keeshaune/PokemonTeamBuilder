@@ -1,3 +1,6 @@
+///////////////////
+// DEX REDUCER
+///////////////////
 export const increase_id = () => {
     return {
         type: "INCREASE",
@@ -9,6 +12,13 @@ export const decrease_id = () => {
     return {
         type: "DECREASE",
         payload: 1
+    }
+}
+
+export const set_id = (id) => {
+    return {
+        type: "SET",
+        payload: id
     }
 }
 
@@ -32,6 +42,10 @@ export const hideCompare = () => {
     }
 }
 
+///////////////////
+// Stats REDUCER
+///////////////////
+
 export const updateStats = (stats) => {
     return {
         type: "UPDATE",
@@ -46,3 +60,20 @@ export const updateCompStats = (stats) => {
     }
 }
 
+///////////////////
+// DEX REDUCER
+///////////////////
+
+export const addTeam = (id) => {
+    return {
+        type: "ADD",
+        payload: id
+    }
+}
+
+export const removeTeam = (id) => {
+    return {
+        type: "REMOVE",
+        payload: id
+    }
+}

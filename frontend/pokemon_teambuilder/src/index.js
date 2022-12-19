@@ -6,10 +6,12 @@ import { combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux';
 import dexReducer from './reducers/dexReducer';
 import statsReducer from './reducers/statsReducer';
+import teamReducer from './reducers/teamReducer';
 
 const store = createStore(combineReducers({
   dexReducer,
-  statsReducer
+  statsReducer,
+  teamReducer
 })) 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
