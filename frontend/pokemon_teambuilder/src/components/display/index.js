@@ -3,13 +3,12 @@ import { useSelector } from "react-redux"
 import axios from "axios"
 import './index.css'
 
-export const Display = () => {
-    const pokeId = useSelector(state => state.dexReducer.id)
+export const Display = ({ display }) => {
     const [pokeImg, setPokeImg] = useState("")
 
     useEffect(() => {
-        fetchPokemon(pokeId)
-    }, [pokeId]) 
+        fetchPokemon(display)
+    }, [display]) 
 
     const fetchPokemon = async (id) => {
         if (id === 0) id = 905

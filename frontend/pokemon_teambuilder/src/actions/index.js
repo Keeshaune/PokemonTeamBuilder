@@ -12,6 +12,26 @@ export const decrease_id = () => {
     }
 }
 
+export const changeCompId = () => {
+    return {
+        type: "UPDATE_COMP"
+    }
+}
+
+export const showCompare = () => {
+    return {
+        type: "SHOW_COMP",
+        payload: true
+    }
+}
+
+export const hideCompare = () => {
+    return {
+        type: "HIDE_COMP",
+        payload: false
+    }
+}
+
 export const updateStats = (stats) => {
     return {
         type: "UPDATE",
@@ -26,16 +46,3 @@ export const updateCompStats = (stats) => {
     }
 }
 
-export const compare = () => {
-    return {
-        type: "COMPARE",
-        payload: true
-    }
-}
-
-export const hideCompare = () => {
-    return {
-        type: "HIDE_COMP",
-        payload: false
-    }
-}

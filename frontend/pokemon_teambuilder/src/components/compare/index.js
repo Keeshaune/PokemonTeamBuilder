@@ -1,25 +1,33 @@
-import React, {useEffect, useState} from 'react'
-import { Display } from '../display'
-import { Stats } from '../stats'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Display, CompStats } from '../index'
+import { changeCompId, hideCompare, showCompare } from '../../actions'
 
-export const Compare = ({ pokeId }) => {
-    const [compId, setCompId] = useState(pokeId)
-    const [id, setId] = useState(pokeId)
 
-    useEffect(() => {
-        setCompId(pokeId)
-    }, [pokeId])
+export const Compare = () => {
+    const compId = useSelector(state => state.dexReducer.compId)
+    const compOn = useSelector(state => state.dexReducer.compOn)
+    const dispatch = useDispatch()
     
-    const handleClick = () => {
-        setId(pokeId)
+    const compareOn = () => {
+        dispatch(changeCompId())
+        dispatch(showCompare())
     }
 
-    return (
+    const compareOff = () => {
+        dispatch(hideCompare())
+    }
+
+    return compOn ? (
         <>
-            <Display pokeId={id}/>
-            <Stats pokeId={compId} compId={compId}/>
-            <button onClick={handleClick}>Compare</button>
+            <Display display={compId}/>
+            <CompStats />
+            <button onClick={compareOn}>Compare</button>
+            <button onClick={compareOff}>Close</button>
         </>
-        
+    )
+    :
+    (
+            <button onClick={compareOn}>Compare</button>
     )
 }

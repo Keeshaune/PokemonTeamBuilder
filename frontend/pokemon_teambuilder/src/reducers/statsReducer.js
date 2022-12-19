@@ -22,7 +22,7 @@ const statsReducer = (state=initialState, action) => {
         case "UPDATE":
             return {...state, stats: action.payload} 
         case "UPDATE_COMP":
-            return {...state, compStats: action.payload} 
+            return {...state, compStats: state.stats} 
         default:
             return state
     }

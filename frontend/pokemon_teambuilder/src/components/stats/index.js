@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import axios from 'axios'
 import { updateStats, updateCompStats } from '../../actions'
+import {fetchStats, calcStats} from '../../helpers'
 import './index.css'
 
-export const Stats = ({comp}) => {
-    const pokeId = useSelector(state => state.dexReducer.id)
+export const Stats = () => {
+    const id = useSelector(state => state.dexReducer.id)
     const compId = useSelector(state => state.dexReducer.compId)
     const compOn = useSelector(state => state.dexReducer.compOn)
     const stats = useSelector(state => state.statsReducer.stats)
@@ -13,50 +14,22 @@ export const Stats = ({comp}) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        fetchStats(pokeId)
-    }, [pokeId])
+        fetchPokeStats(id)
+    }, [id])
 
     useEffect(() => {
         fetchCompStats(compId)
     }, [compId])
 
-    const fetchStats = async (id) => {
-        const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        let pStats = {}
-        data.stats.forEach(slot => pStats[slot.stat.name] =  slot.base_stat)
-        dispatch(updateStats(pStats))
+    const fetchPokeStats = async (id) => {
+        dispatch(updateStats(await fetchStats(id)))
     }
 
     const fetchCompStats = async (id) => {
-        const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        let pStats = {}
-        data.stats.forEach(slot => pStats[slot.stat.name] =  slot.base_stat)
-        dispatch(updateCompStats(pStats))
+        dispatch(updateCompStats(await fetchStats(id)))
     }
 
-    const calcStats = (stat, compStat) => {
-        const diff = stat - compStat
-        if (diff < 0) return `${stat} ${diff}`
-        else if (diff > 0) return `${stat} +${diff}`
-        else return stat
-    }
-
-    return comp ? (
-        <div>   
-            <div className="all-stats">
-                <div className='stats-col-1'>
-                    <p>HP: {stats.hp}</p>
-                    <p>Attack: {stats.attack}</p>
-                    <p>Defense: {stats.defense}</p>
-                </div>
-                <div className='stats-col-2'>
-                    <p>Sp Atk: {stats["special-attack"]}</p>
-                    <p>Sp Def: {stats["special-defense"]}</p>
-                    <p>Speed: {stats.speed}</p>
-                </div>
-            </div>
-        </div>
-    ) : (
+    return compOn ? (
         <div>   
             <div className="all-stats">
                 <div className='stats-col-1'>
@@ -72,4 +45,21 @@ export const Stats = ({comp}) => {
             </div>
         </div>
     )
+    : 
+    (
+        <div>   
+            <div className="all-stats">
+                <div className='stats-col-1'>
+                    <p>HP: {stats.hp}</p>
+                    <p>Attack: {stats.attack}</p>
+                    <p>Defense: {stats.defense}</p>
+                </div>
+                <div className='stats-col-2'>
+                    <p>Sp Atk: {stats["special-attack"]}</p>
+                    <p>Sp Def: {stats["special-defense"]}</p>
+                    <p>Speed: {stats.speed}</p>
+                </div>
+            </div>
+        </div>
+    ) 
 }
