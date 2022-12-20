@@ -4,10 +4,8 @@ const initialState = {
 
 const teamReducer = (state=initialState, action) => {
     switch (action.type) {
-        case "ADD":
-            return {...state, slots: state.slots.push(action.payload)} 
-        case "REMOVE":
-            return {...state, slots: state.slots.splice(state.slots.indexOf(action.payload), 1)} 
+        case "SET":
+            return {...state, slots: action.payload} 
         default:
             return state
     }

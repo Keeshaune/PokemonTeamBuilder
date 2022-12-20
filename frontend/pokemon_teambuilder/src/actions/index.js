@@ -61,13 +61,13 @@ export const updateCompStats = (stats) => {
 }
 
 ///////////////////
-// DEX REDUCER
+// TEAM REDUCER
 ///////////////////
 
-export const addTeam = (id) => {
+export const setTeam = (team) => {
     return {
-        type: "ADD",
-        payload: id
+        type: "SET",
+        payload: team
     }
 }
 
