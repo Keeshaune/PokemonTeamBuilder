@@ -5,6 +5,7 @@ import { Compare } from "../compare"
 import { Stats } from "../stats"
 import { Search } from "../search"
 import "./index.css"
+import { Type } from "../type"
 
 export const Pokedex = () => {
     const id = useSelector(state => state.dexReducer.id)
@@ -31,6 +32,7 @@ export const Pokedex = () => {
             <div className="images">
                 <Display display={id}/>
             </div>
+            <Type id={id} />
             <Stats />
             <button onClick={handle_prev}>Previous</button>
             <Search />

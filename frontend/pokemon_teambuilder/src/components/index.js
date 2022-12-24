@@ -4,3 +4,4 @@ export { CompStats } from "./compStats"
 export { Pokedex } from "./pokedex";
 export { Team } from "./team"
 export { Search } from "./search"
+export { Type } from "./type"
