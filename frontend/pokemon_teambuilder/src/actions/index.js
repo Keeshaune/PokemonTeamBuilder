@@ -17,7 +17,7 @@ export const decrease_id = () => {
 
 export const set_id = (id) => {
     return {
-        type: "SET",
+        type: "SET_ID",
         payload: id
     }
 }
@@ -66,7 +66,7 @@ export const updateCompStats = (stats) => {
 
 export const setTeam = (team) => {
     return {
-        type: "SET",
+        type: "SET_TEAM",
         payload: team
     }
 }

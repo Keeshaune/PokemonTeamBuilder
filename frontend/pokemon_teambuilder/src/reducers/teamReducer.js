@@ -1,11 +1,11 @@
 const initialState = {
-    slots: [34, 12, 90]
+    slots: []
 }
 
 const teamReducer = (state=initialState, action) => {
     switch (action.type) {
-        case "SET":
-            return {...state, slots: action.payload} 
+        case "SET_TEAM":
+            return {slots: action.payload}
         default:
             return state
     }

@@ -22,10 +22,8 @@ export const Pokedex = () => {
     }
 
     const handle_add = () => {
-        console.log(team)
         team.push(id)
-        // setTeam(team)
-        dispatch(team)
+        dispatch(setTeam(team))
     }
 
     return (
