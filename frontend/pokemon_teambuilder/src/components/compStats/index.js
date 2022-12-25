@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateCompStats } from '../../actions'
-import {fetchStats} from '../../helpers'
+import {fetchStats, calcTotalStats} from '../../helpers'
 
 
 export const CompStats = () => {
@@ -30,6 +30,7 @@ export const CompStats = () => {
                     <p>Sp Atk: {compStats["special-attack"]}</p>
                     <p>Sp Def: {compStats["special-defense"]}</p>
                     <p>Speed: {compStats.speed}</p>
+                    <p>Total: {calcTotalStats(compStats)}</p>
                 </div>
             </div>
         </div>

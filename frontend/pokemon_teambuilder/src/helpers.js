@@ -35,3 +35,11 @@ export const calcStats = (stat, compStat) => {
     else if (diff > 0) return `${stat} (+${diff})`
     else return stat
 }
+
+export const calcTotalStats = (stats) => {
+    let total = 0
+    for (let key in stats) {
+        total += stats[key]
+    }
+    return total
+}
