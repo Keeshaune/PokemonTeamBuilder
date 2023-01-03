@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Display } from "../display";
 import { set_id } from "../../actions";
 import { TeamStats } from "../teamStats";
+import { Coverage } from "../coverage";
 
 export const Team = () => {
     const team = useSelector(state => state.teamReducer)
@@ -19,6 +20,7 @@ export const Team = () => {
                 {team.slots.map( id => <li onClick={selectPoke}><Display display={id}/></li>)} 
             </ul>
             <TeamStats />
+            <Coverage team={team} />
         </div>
         
     )
